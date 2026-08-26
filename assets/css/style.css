@@ -1,0 +1,276 @@
+/* =========================================================
+   Descubra seu Signo — estilo "atlas de estrelas"
+   Paleta: índigo profundo + dourado latão + tons por elemento
+   ========================================================= */
+
+:root {
+    --cor-fundo: #0B1026;
+    --cor-painel: #161B33;
+    --cor-painel-alta: #1D2340;
+    --cor-dourado: #C9A227;
+    --cor-dourado-claro: #E8CD70;
+    --cor-texto: #F0E6D2;
+    --cor-texto-suave: #B7B0C9;
+
+    --cor-fogo: #D1495B;
+    --cor-terra: #6B8F71;
+    --cor-ar: #7FA8C9;
+    --cor-agua: #4A6FA5;
+
+    --fonte-display: 'Cormorant Garamond', Georgia, serif;
+    --fonte-corpo: 'Inter', system-ui, sans-serif;
+}
+
+body {
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: var(--fonte-corpo);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ---------- Campo de estrelas ---------- */
+.starfield {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--cor-fundo);
+    background-image:
+        radial-gradient(circle, rgba(232,205,112,.9) 1px, transparent 1px),
+        radial-gradient(circle, rgba(232,205,112,.6) 1px, transparent 1px),
+        radial-gradient(circle, rgba(232,205,112,.4) 1px, transparent 1px);
+    background-size: 180px 180px, 240px 240px, 130px 130px;
+    background-position: 0 0, 60px 90px, 100px 40px;
+    animation: cintilar 6s ease-in-out infinite alternate;
+}
+
+@keyframes cintilar {
+    from { opacity: .55; }
+    to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .starfield { animation: none; }
+}
+
+/* ---------- Tipografia ---------- */
+.eyebrow {
+    font-family: var(--fonte-corpo);
+    font-size: .78rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--cor-dourado);
+    font-weight: 600;
+}
+
+.hero-title {
+    font-family: var(--fonte-display);
+    font-weight: 700;
+    font-size: clamp(2.4rem, 6vw, 3.4rem);
+    color: var(--cor-texto);
+    letter-spacing: .01em;
+}
+
+.hero-subtitle {
+    color: var(--cor-texto-suave);
+    font-size: 1.02rem;
+}
+
+.descricao-signo {
+    font-family: var(--fonte-display);
+    font-size: 1.35rem;
+    line-height: 1.5;
+    color: var(--cor-texto);
+}
+
+.rodape {
+    color: var(--cor-texto-suave);
+    font-size: .78rem;
+    letter-spacing: .04em;
+}
+
+/* ---------- Cartão principal ---------- */
+.card-signo {
+    background: linear-gradient(180deg, var(--cor-painel-alta), var(--cor-painel));
+    border: 1px solid rgba(201, 162, 39, .28);
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .45);
+}
+
+.label-dourado {
+    color: var(--cor-dourado-claro);
+    font-weight: 600;
+    font-size: .85rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+}
+
+.input-signo {
+    background: rgba(11, 16, 38, .55);
+    border: 1px solid rgba(201, 162, 39, .35);
+    color: var(--cor-texto);
+    border-radius: 10px;
+}
+
+.input-signo:focus {
+    background: rgba(11, 16, 38, .7);
+    border-color: var(--cor-dourado);
+    color: var(--cor-texto);
+    box-shadow: 0 0 0 .2rem rgba(201, 162, 39, .25);
+}
+
+.input-signo::-webkit-calendar-picker-indicator {
+    filter: invert(76%) sepia(45%) saturate(500%) hue-rotate(2deg);
+}
+
+.form-text {
+    color: var(--cor-texto-suave);
+    font-size: .82rem;
+}
+
+/* ---------- Botões ---------- */
+.btn-signo {
+    background: linear-gradient(180deg, var(--cor-dourado-claro), var(--cor-dourado));
+    color: #1B1B2F;
+    font-weight: 600;
+    letter-spacing: .03em;
+    border: none;
+    border-radius: 10px;
+    padding: .8rem 1.4rem;
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.btn-signo:hover,
+.btn-signo:focus {
+    color: #1B1B2F;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(201, 162, 39, .35);
+}
+
+.btn-signo-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--cor-dourado-claro);
+    border: 1px solid rgba(201, 162, 39, .5);
+    border-radius: 10px;
+    padding: .65rem 1.2rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background .15s ease, border-color .15s ease;
+}
+
+.btn-signo-outline:hover {
+    background: rgba(201, 162, 39, .1);
+    border-color: var(--cor-dourado);
+    color: var(--cor-dourado-claro);
+}
+
+/* ---------- Alerta de erro ---------- */
+.alert-erro {
+    background: var(--cor-painel);
+    border: 1px solid rgba(209, 73, 91, .5);
+    border-radius: 14px;
+    color: var(--cor-texto);
+}
+
+/* ---------- Grade de informações ---------- */
+.info-grid .info-label {
+    display: block;
+    font-size: .72rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--cor-texto-suave);
+    margin-bottom: .15rem;
+}
+
+.info-grid .info-valor {
+    display: block;
+    font-family: var(--fonte-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--cor-texto);
+}
+
+.info-label {
+    font-size: .72rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--cor-texto-suave);
+}
+
+/* ---------- Badges de traços ---------- */
+.badge-traco {
+    display: inline-block;
+    font-size: .8rem;
+    padding: .35rem .7rem;
+    border-radius: 999px;
+    margin: 0 .35rem .35rem 0;
+    font-weight: 500;
+}
+
+.badge-forte {
+    background: rgba(107, 143, 113, .18);
+    color: #A8CBAE;
+    border: 1px solid rgba(107, 143, 113, .4);
+}
+
+.badge-fraco {
+    background: rgba(209, 73, 91, .15);
+    color: #E6A2AB;
+    border: 1px solid rgba(209, 73, 91, .35);
+}
+
+/* ---------- Roda do zodíaco (SVG) ---------- */
+.roda-zodiaco {
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, .5));
+}
+
+.roda-borda {
+    fill: none;
+    stroke: rgba(201, 162, 39, .25);
+    stroke-width: 1;
+}
+
+.fatia {
+    fill: var(--cor-painel-alta);
+    stroke: var(--cor-fundo);
+    stroke-width: 2;
+    transition: fill .2s ease;
+}
+
+.fatia-ativa {
+    fill: var(--cor-dourado);
+}
+
+.roda-centro {
+    fill: var(--cor-fundo);
+    stroke: rgba(201, 162, 39, .4);
+    stroke-width: 1;
+}
+
+.roda-simbolo-central {
+    font-family: var(--fonte-display);
+    font-size: 46px;
+    fill: var(--cor-dourado-claro);
+}
+
+.roda-nome-central {
+    font-family: var(--fonte-corpo);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    fill: var(--cor-texto);
+    text-transform: uppercase;
+}
+
+/* Foco visível para acessibilidade via teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--cor-dourado-claro);
+    outline-offset: 2px;
+}
